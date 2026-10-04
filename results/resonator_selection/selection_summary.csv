@@ -1,0 +1,2 @@
+selection_type,subset,low_count,high_count,target_frequencies_hz,feature_family,requested_features,classifier,accuracy,balanced_accuracy,macro_f1,fold_balanced_accuracy_mean,fold_balanced_accuracy_std,fold_balanced_accuracy_min,n,folds,raw_feature_dimension
+best_five_sensor_100hz,S3;S4;S5;S6;S8,2,3,300;1800;3500;4500;7500,full,all,linear_svm,0.6703296703296703,0.6703296703296704,0.6439717208382366,0.6703296703296703,0.152268202863198,0.34615384615384615,182,7,25

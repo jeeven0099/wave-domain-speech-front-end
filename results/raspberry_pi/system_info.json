@@ -1,0 +1,32 @@
+{
+  "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+  "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+  "architecture": "aarch64",
+  "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+  "kernel": "6.12.62+rpt-rpi-v8",
+  "python_version": "3.13.5",
+  "pytorch_version": "2.14.0+cu130",
+  "cpu_governor": [
+    "performance"
+  ],
+  "current_cpu_frequency_mhz": [
+    1800.0,
+    1800.0,
+    1800.0,
+    1800.0
+  ],
+  "max_cpu_frequency_mhz": [
+    1800.0,
+    1800.0,
+    1800.0,
+    1800.0
+  ],
+  "os_cpu_thread_count": 4,
+  "physical_cpu_count": 4,
+  "logical_cpu_count": 4,
+  "torch_threads": 1,
+  "torch_interop_threads": 1,
+  "temperature_c": 43.816,
+  "ram_total_mb": 7820.66015625,
+  "ram_available_mb": 6842.8359375
+}

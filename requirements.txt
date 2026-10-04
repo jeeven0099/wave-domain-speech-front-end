@@ -1,0 +1,12 @@
+matplotlib>=3.8
+numpy>=1.26
+pandas>=2.1
+psutil>=5.9
+pytest>=8.0
+scikit-learn>=1.4
+scipy>=1.11
+soundfile>=0.12
+tqdm>=4.66
+
+# Install the CPU build of PyTorch/torchaudio appropriate for the target
+# platform separately. Raspberry Pi wheels are platform-specific.

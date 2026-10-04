@@ -1,0 +1,6 @@
+target_frequency_hz,neck_diameter_mm,neck_length_mm,effective_neck_length_mm,cavity_side_mm,cavity_depth_mm,total_volume_ml
+300,2.50,16.28,18.41,23.46,12.00,9.213
+1800,3.39,4.00,6.88,8.87,15.36,1.404
+3500,6.00,10.00,15.10,12.16,3.20,0.475
+4500,5.00,6.40,10.65,8.01,3.04,0.283
+7500,4.00,4.00,7.40,6.84,1.60,0.077

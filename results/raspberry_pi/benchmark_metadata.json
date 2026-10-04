@@ -1,0 +1,1406 @@
+{
+  "system_information": {
+    "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+    "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+    "architecture": "aarch64",
+    "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+    "kernel": "6.12.62+rpt-rpi-v8",
+    "python_version": "3.13.5",
+    "pytorch_version": "2.14.0+cu130",
+    "cpu_governor": [
+      "performance"
+    ],
+    "current_cpu_frequency_mhz": [
+      1800.0,
+      1800.0,
+      1800.0,
+      1800.0
+    ],
+    "max_cpu_frequency_mhz": [
+      1800.0,
+      1800.0,
+      1800.0,
+      1800.0
+    ],
+    "os_cpu_thread_count": 4,
+    "physical_cpu_count": 4,
+    "logical_cpu_count": 4,
+    "torch_threads": 1,
+    "torch_interop_threads": 1,
+    "temperature_c": 43.816,
+    "ram_total_mb": 7820.66015625,
+    "ram_available_mb": 6842.8359375
+  },
+  "benchmark_contract": {
+    "batch_size": 1,
+    "device": "cpu",
+    "torch_threads": 1,
+    "torch_interop_threads": 1,
+    "warmup_iterations": 50,
+    "measured_runs": 6000,
+    "timed_sample_schedule": "deterministic evenly spaced held-out indices when runs <= test size; cyclic indices otherwise",
+    "timing_clock": "time.perf_counter_ns",
+    "process_cpu_source": "psutil.Process().cpu_times()",
+    "total_ms": "frontend_ms + nn_ms",
+    "rtf": "sum(total_processing_seconds) / sum(audio_duration_seconds)",
+    "accuracy_unit": "percent",
+    "peak_ram": "peak inference RSS minus post-load baseline RSS"
+  },
+  "systems": {
+    "digital_16k/bc_resnet_1": {
+      "accuracy_unit": "percent",
+      "architecture": "bc_resnet_1",
+      "checkpoint": "models/digital_16k/bc_resnet_1_best.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 2389632,
+      "nn_macs_p95": 2389632,
+      "nn_macs_max": 2389632,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 828.72265625,
+      "absolute_peak_rss_mb": 844.99609375,
+      "observed_source_sample_rates_hz": [
+        16000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "causal_contract_version": 2,
+        "frontend": "causal 40-bin HTK log-Mel; 16 kHz; 50 ms window; 10 ms hop; center=False; 1 s fixed input",
+        "pretraining": "none; trained from scratch on AudioMNIST train speakers",
+        "selection": "minimum validation cross-entropy",
+        "decoder": "10-class softmax; top-1 and top-3",
+        "streaming": "past-only encoder plus running mean of frame logits",
+        "architecture": "bc_resnet_1"
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.816,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6577.02734375
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.816,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6324.78515625
+      }
+    },
+    "digital_envelope_400hz/bc_resnet_1": {
+      "accuracy_unit": "percent",
+      "architecture": "bc_resnet_1_1d",
+      "checkpoint": "models/digital_envelope_400hz/bc_resnet_1_1d/best_validation_checkpoint.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 480000,
+      "nn_macs_p95": 480000,
+      "nn_macs_max": 480000,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 1248.46875,
+      "absolute_peak_rss_mb": 1262.05859375,
+      "observed_source_sample_rates_hz": [
+        48000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "experiment_contract": {
+          "task": "AudioMNIST isolated spoken-digit classification",
+          "input": "one causal broadband RMS-envelope value per 2.5 ms",
+          "input_rate_hz": 400,
+          "input_features_per_step": 1,
+          "input_scalar_rate_per_second": 400,
+          "fixed_duration_s": 1.0,
+          "source_audio_rate_hz": 48000,
+          "envelope_window_ms": 10.0,
+          "envelope_hop_ms": 2.5,
+          "rms_envelope_used": true,
+          "native_400hz_adc_claim": false,
+          "fft_or_mel_used": false,
+          "decoder": "10-class endpoint softmax; top-1 and top-3",
+          "model_causality": "past-only temporal convolution; no future padding",
+          "split": "fixed 36/12/12 speaker-disjoint AudioMNIST protocol",
+          "selection": "validation accuracy only; test evaluated after all checkpoints freeze",
+          "flop_convention": "one multiply-accumulate equals two FLOPs"
+        },
+        "epoch": 26
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6612.99609375
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.816,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 5862.53515625
+      }
+    },
+    "digital_16k/bc_resnet_2": {
+      "accuracy_unit": "percent",
+      "architecture": "bc_resnet_2",
+      "checkpoint": "models/digital_16k/bc_resnet_2_best.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 7021824,
+      "nn_macs_p95": 7021824,
+      "nn_macs_max": 7021824,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 829.35546875,
+      "absolute_peak_rss_mb": 845.4453125,
+      "observed_source_sample_rates_hz": [
+        16000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "causal_contract_version": 2,
+        "frontend": "causal 40-bin HTK log-Mel; 16 kHz; 50 ms window; 10 ms hop; center=False; 1 s fixed input",
+        "pretraining": "none; trained from scratch on AudioMNIST train speakers",
+        "selection": "minimum validation cross-entropy",
+        "decoder": "10-class softmax; top-1 and top-3",
+        "streaming": "past-only encoder plus running mean of frame logits",
+        "architecture": "bc_resnet_2"
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6590.8046875
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 45.277,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6279.67578125
+      }
+    },
+    "digital_envelope_400hz/bc_resnet_2": {
+      "accuracy_unit": "percent",
+      "architecture": "bc_resnet_2_1d",
+      "checkpoint": "models/digital_envelope_400hz/bc_resnet_2_1d/best_validation_checkpoint.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 1774400,
+      "nn_macs_p95": 1774400,
+      "nn_macs_max": 1774400,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 1248.6484375,
+      "absolute_peak_rss_mb": 1262.3515625,
+      "observed_source_sample_rates_hz": [
+        48000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "experiment_contract": {
+          "task": "AudioMNIST isolated spoken-digit classification",
+          "input": "one causal broadband RMS-envelope value per 2.5 ms",
+          "input_rate_hz": 400,
+          "input_features_per_step": 1,
+          "input_scalar_rate_per_second": 400,
+          "fixed_duration_s": 1.0,
+          "source_audio_rate_hz": 48000,
+          "envelope_window_ms": 10.0,
+          "envelope_hop_ms": 2.5,
+          "rms_envelope_used": true,
+          "native_400hz_adc_claim": false,
+          "fft_or_mel_used": false,
+          "decoder": "10-class endpoint softmax; top-1 and top-3",
+          "model_causality": "past-only temporal convolution; no future padding",
+          "split": "fixed 36/12/12 speaker-disjoint AudioMNIST protocol",
+          "selection": "validation accuracy only; test evaluated after all checkpoints freeze",
+          "flop_convention": "one multiply-accumulate equals two FLOPs"
+        },
+        "epoch": 32
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6574.421875
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.329,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 5845.6953125
+      }
+    },
+    "digital_16k/edgespeechnet_a": {
+      "accuracy_unit": "percent",
+      "architecture": "edgespeechnet_a",
+      "checkpoint": "models/digital_16k/edgespeechnet_a_best.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 409786560,
+      "nn_macs_p95": 409786560,
+      "nn_macs_max": 409786560,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 829.40234375,
+      "absolute_peak_rss_mb": 847.47265625,
+      "observed_source_sample_rates_hz": [
+        16000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "causal_contract_version": 2,
+        "frontend": "causal 40-bin HTK log-Mel; 16 kHz; 50 ms window; 10 ms hop; center=False; 1 s fixed input",
+        "pretraining": "none; trained from scratch on AudioMNIST train speakers",
+        "selection": "minimum validation cross-entropy",
+        "decoder": "10-class softmax; top-1 and top-3",
+        "streaming": "past-only encoder plus running mean of frame logits",
+        "architecture": "edgespeechnet_a"
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.79,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6574.25390625
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 47.225,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6283.42578125
+      }
+    },
+    "digital_envelope_400hz/edgespeechnet_a": {
+      "accuracy_unit": "percent",
+      "architecture": "edgespeechnet_a_1d",
+      "checkpoint": "models/digital_envelope_400hz/edgespeechnet_a_1d/best_validation_checkpoint.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 14407200,
+      "nn_macs_p95": 14407200,
+      "nn_macs_max": 14407200,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 1248.56640625,
+      "absolute_peak_rss_mb": 1256.453125,
+      "observed_source_sample_rates_hz": [
+        48000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "experiment_contract": {
+          "task": "AudioMNIST isolated spoken-digit classification",
+          "input": "one causal broadband RMS-envelope value per 2.5 ms",
+          "input_rate_hz": 400,
+          "input_features_per_step": 1,
+          "input_scalar_rate_per_second": 400,
+          "fixed_duration_s": 1.0,
+          "source_audio_rate_hz": 48000,
+          "envelope_window_ms": 10.0,
+          "envelope_hop_ms": 2.5,
+          "rms_envelope_used": true,
+          "native_400hz_adc_claim": false,
+          "fft_or_mel_used": false,
+          "decoder": "10-class endpoint softmax; top-1 and top-3",
+          "model_causality": "past-only temporal convolution; no future padding",
+          "split": "fixed 36/12/12 speaker-disjoint AudioMNIST protocol",
+          "selection": "validation accuracy only; test evaluated after all checkpoints freeze",
+          "flop_convention": "one multiply-accumulate equals two FLOPs"
+        },
+        "epoch": 24
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 46.738,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6570.02734375
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 5837.30859375
+      }
+    },
+    "digital_16k/matchboxnet_3x1x64": {
+      "accuracy_unit": "percent",
+      "architecture": "matchboxnet_3x1x64",
+      "checkpoint": "models/digital_16k/matchboxnet_3x1x64_best.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 5909760,
+      "nn_macs_p95": 5909760,
+      "nn_macs_max": 5909760,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 828.9453125,
+      "absolute_peak_rss_mb": 840.49609375,
+      "observed_source_sample_rates_hz": [
+        16000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "causal_contract_version": 2,
+        "frontend": "causal 40-bin HTK log-Mel; 16 kHz; 50 ms window; 10 ms hop; center=False; 1 s fixed input",
+        "pretraining": "none; trained from scratch on AudioMNIST train speakers",
+        "selection": "minimum validation cross-entropy",
+        "decoder": "10-class softmax; top-1 and top-3",
+        "streaming": "past-only encoder plus running mean of frame logits",
+        "architecture": "matchboxnet_3x1x64"
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 45.277,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6567.640625
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.816,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6278.484375
+      }
+    },
+    "digital_envelope_400hz/matchboxnet_3x1x64": {
+      "accuracy_unit": "percent",
+      "architecture": "matchboxnet_3x1x64_1d",
+      "checkpoint": "models/digital_envelope_400hz/matchboxnet_3x1x64_1d/best_validation_checkpoint.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 22455600,
+      "nn_macs_p95": 22455600,
+      "nn_macs_max": 22455600,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 1247.71875,
+      "absolute_peak_rss_mb": 1261.640625,
+      "observed_source_sample_rates_hz": [
+        48000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "experiment_contract": {
+          "task": "AudioMNIST isolated spoken-digit classification",
+          "input": "one causal broadband RMS-envelope value per 2.5 ms",
+          "input_rate_hz": 400,
+          "input_features_per_step": 1,
+          "input_scalar_rate_per_second": 400,
+          "fixed_duration_s": 1.0,
+          "source_audio_rate_hz": 48000,
+          "envelope_window_ms": 10.0,
+          "envelope_hop_ms": 2.5,
+          "rms_envelope_used": true,
+          "native_400hz_adc_claim": false,
+          "fft_or_mel_used": false,
+          "decoder": "10-class endpoint softmax; top-1 and top-3",
+          "model_causality": "past-only temporal convolution; no future padding",
+          "split": "fixed 36/12/12 speaker-disjoint AudioMNIST protocol",
+          "selection": "validation accuracy only; test evaluated after all checkpoints freeze",
+          "flop_convention": "one multiply-accumulate equals two FLOPs"
+        },
+        "epoch": 36
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6568.453125
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 5829.39453125
+      }
+    },
+    "digital_16k/mlperf_tiny_dscnn": {
+      "accuracy_unit": "percent",
+      "architecture": "mlperf_tiny_dscnn",
+      "checkpoint": "models/digital_16k/mlperf_tiny_dscnn_best.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 20428800,
+      "nn_macs_p95": 20428800,
+      "nn_macs_max": 20428800,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 828.67578125,
+      "absolute_peak_rss_mb": 841.66015625,
+      "observed_source_sample_rates_hz": [
+        16000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "causal_contract_version": 2,
+        "frontend": "causal 40-bin HTK log-Mel; 16 kHz; 50 ms window; 10 ms hop; center=False; 1 s fixed input",
+        "pretraining": "none; trained from scratch on AudioMNIST train speakers",
+        "selection": "minimum validation cross-entropy",
+        "decoder": "10-class softmax; top-1 and top-3",
+        "streaming": "past-only encoder plus running mean of frame logits",
+        "architecture": "mlperf_tiny_dscnn"
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6557.41796875
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.79,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6263.15234375
+      }
+    },
+    "digital_envelope_400hz/mlperf_tiny_dscnn": {
+      "accuracy_unit": "percent",
+      "architecture": "mlperf_tiny_dscnn_1d",
+      "checkpoint": "models/digital_envelope_400hz/mlperf_tiny_dscnn_1d/best_validation_checkpoint.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 3686400,
+      "nn_macs_p95": 3686400,
+      "nn_macs_max": 3686400,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 1247.35546875,
+      "absolute_peak_rss_mb": 1259.609375,
+      "observed_source_sample_rates_hz": [
+        48000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "experiment_contract": {
+          "task": "AudioMNIST isolated spoken-digit classification",
+          "input": "one causal broadband RMS-envelope value per 2.5 ms",
+          "input_rate_hz": 400,
+          "input_features_per_step": 1,
+          "input_scalar_rate_per_second": 400,
+          "fixed_duration_s": 1.0,
+          "source_audio_rate_hz": 48000,
+          "envelope_window_ms": 10.0,
+          "envelope_hop_ms": 2.5,
+          "rms_envelope_used": true,
+          "native_400hz_adc_claim": false,
+          "fft_or_mel_used": false,
+          "decoder": "10-class endpoint softmax; top-1 and top-3",
+          "model_causality": "past-only temporal convolution; no future padding",
+          "split": "fixed 36/12/12 speaker-disjoint AudioMNIST protocol",
+          "selection": "validation accuracy only; test evaluated after all checkpoints freeze",
+          "flop_convention": "one multiply-accumulate equals two FLOPs"
+        },
+        "epoch": 25
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.79,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6552.55859375
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 5820.75
+      }
+    },
+    "digital_16k/tc_resnet8": {
+      "accuracy_unit": "percent",
+      "architecture": "tc_resnet8",
+      "checkpoint": "models/digital_16k/tc_resnet8_best.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 650880,
+      "nn_macs_p95": 650880,
+      "nn_macs_max": 650880,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 828.73828125,
+      "absolute_peak_rss_mb": 835.23828125,
+      "observed_source_sample_rates_hz": [
+        16000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "causal_contract_version": 2,
+        "frontend": "causal 40-bin HTK log-Mel; 16 kHz; 50 ms window; 10 ms hop; center=False; 1 s fixed input",
+        "pretraining": "none; trained from scratch on AudioMNIST train speakers",
+        "selection": "minimum validation cross-entropy",
+        "decoder": "10-class softmax; top-1 and top-3",
+        "streaming": "past-only encoder plus running mean of frame logits",
+        "architecture": "tc_resnet8"
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.329,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6546.7734375
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.329,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6247.39453125
+      }
+    },
+    "digital_envelope_400hz/tc_resnet8": {
+      "accuracy_unit": "percent",
+      "architecture": "tc_resnet8_1d",
+      "checkpoint": "models/digital_envelope_400hz/tc_resnet8_1d/best_validation_checkpoint.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 1963200,
+      "nn_macs_p95": 1963200,
+      "nn_macs_max": 1963200,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 1247.51953125,
+      "absolute_peak_rss_mb": 1255.16796875,
+      "observed_source_sample_rates_hz": [
+        48000.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "experiment_contract": {
+          "task": "AudioMNIST isolated spoken-digit classification",
+          "input": "one causal broadband RMS-envelope value per 2.5 ms",
+          "input_rate_hz": 400,
+          "input_features_per_step": 1,
+          "input_scalar_rate_per_second": 400,
+          "fixed_duration_s": 1.0,
+          "source_audio_rate_hz": 48000,
+          "envelope_window_ms": 10.0,
+          "envelope_hop_ms": 2.5,
+          "rms_envelope_used": true,
+          "native_400hz_adc_claim": false,
+          "fft_or_mel_used": false,
+          "decoder": "10-class endpoint softmax; top-1 and top-3",
+          "model_causality": "past-only temporal convolution; no future padding",
+          "split": "fixed 36/12/12 speaker-disjoint AudioMNIST protocol",
+          "selection": "validation accuracy only; test evaluated after all checkpoints freeze",
+          "flop_convention": "one multiply-accumulate equals two FLOPs"
+        },
+        "epoch": 25
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.79,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6540.09765625
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 5812.98828125
+      }
+    },
+    "fabricated_400hz": {
+      "accuracy_unit": "percent",
+      "architecture": "envelope_400hz_c32_fk32_long_tcn_stats_pool_softmax",
+      "checkpoint": "models/fabricated_400hz/best_envelope_400hz_5d_pooled_tcn_classifier.pt",
+      "test_examples": 6000,
+      "test_identity_sha256": "d8a01a9af841b79e35eea0986a99f976633ecd2677f89890e5551012f5972c38",
+      "sample_ids_auditable": true,
+      "warmup_iterations": 50,
+      "measured_runs": 6000,
+      "batch_size": 1,
+      "device": "cpu",
+      "nn_macs_definition": "median per held-out example; Conv/Linear/Recurrent MAC only",
+      "nn_macs_min": 384160,
+      "nn_macs_p95": 792160,
+      "nn_macs_max": 898240,
+      "cpu_time_definition": "aggregate process user+system CPU delta divided by measured runs",
+      "peak_ram_definition": "peak worker-process RSS during an untimed inference pass minus RSS after model, frontend, and test inputs were loaded",
+      "post_load_baseline_rss_mb": 5528.83203125,
+      "absolute_peak_rss_mb": 5556.37109375,
+      "observed_source_sample_rates_hz": [
+        48007.0
+      ],
+      "measurement_role": "current implemented digital processing path",
+      "frontend_definition": "digital operations in preprocess function; excludes disk I/O and checkpoint loading",
+      "checkpoint_metadata": {
+        "feature_contract": "audiomnist_ac_rms_envelope_5d_400hz_10ms_window_2p5ms_hop_causal_tcn_stats_pool_softmax_v1",
+        "feature_names": [
+          "R300_ac_rms_envelope_v",
+          "R3500_ac_rms_envelope_v",
+          "R7500_ac_rms_envelope_v",
+          "R1800_ac_rms_envelope_v",
+          "R4500_ac_rms_envelope_v"
+        ],
+        "context_ms": 50.0,
+        "epoch": 65
+      },
+      "worker_system_information_before": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 43.329,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 6538.23828125
+      },
+      "worker_system_information_after": {
+        "raspberry_pi_model": "Raspberry Pi 4 Model B Rev 1.5",
+        "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+        "architecture": "aarch64",
+        "platform": "Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41",
+        "kernel": "6.12.62+rpt-rpi-v8",
+        "python_version": "3.13.5",
+        "pytorch_version": "2.14.0+cu130",
+        "cpu_governor": [
+          "performance"
+        ],
+        "current_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "max_cpu_frequency_mhz": [
+          1800.0,
+          1800.0,
+          1800.0,
+          1800.0
+        ],
+        "os_cpu_thread_count": 4,
+        "physical_cpu_count": 4,
+        "logical_cpu_count": 4,
+        "torch_threads": 1,
+        "torch_interop_threads": 1,
+        "temperature_c": 44.303,
+        "ram_total_mb": 7820.66015625,
+        "ram_available_mb": 1533.85546875
+      }
+    }
+  }
+}

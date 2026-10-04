@@ -1,0 +1,43 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.tmp_pytest/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Raw or generated research data
+data/
+captures/
+cache/
+stimuli/
+models/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.tdms
+*.wav
+*.flac
+
+# Local benchmark products
+results/local/
+*.tgz
+*.zip
+
+# Credentials and machine-local configuration
+.env
+.env.*
+*.pem
+*.key
+*secret*
+*token*
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

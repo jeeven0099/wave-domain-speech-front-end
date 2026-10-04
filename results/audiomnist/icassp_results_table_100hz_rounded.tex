@@ -1,0 +1,53 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{AudioMNIST classifiers measured on a Raspberry Pi 4 Model B
+(1.8\,GHz, 8\,GB, performance governor, single thread, batch size 1,
+PyTorch 2.14). Baseline denotes the 16-kHz log-Mel path; Our work denotes the
+five-channel 100-Hz resonator-envelope path. Each architecture is shown in
+both versions; pairs are ordered by the parameter count of the 16-kHz variant.
+Latencies are medians over at least 2,000 timed inferences per system.
+$t_{\mathrm{comp}}=t_{\mathrm{front}}+t_{\mathrm{nn}}$, and energy is
+$E=P\,t_{\mathrm{comp}}$, reported both at the measured dynamic draw
+$P_{\mathrm{dyn}}=0.30$\,W and at the full system draw
+$P_{\mathrm{sys}}=2.55$\,W. Parameter counts are rounded to 0.1k and MAC
+counts to the nearest 1k.}
+\label{tab:results}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+\multirow{2}{*}{Model} & \multirow{2}{*}{Version} &
+\multirow{2}{*}{Params} & \multirow{2}{*}{MACs} & Acc. &
+$t_{\mathrm{front}}$ & $t_{\mathrm{nn}}$ & $t_{\mathrm{comp}}$ &
+$E_{\mathrm{dyn}}$ & $E_{\mathrm{sys}}$ \\
+& & & & (\%) & (ms) & (ms) & (ms) & (mJ) & (mJ) \\
+\midrule
+\multirow{2}{*}{MicroCNN~\cite{tflmMicroSpeech}} & Baseline & 0.7k & 461k & 43.88 & 8.60 & 4.81 & 13.41 & 4.02 & 34.2 \\
+& Our work & 0.5k & 18k & 74.72 & 0.28 & 1.00 & 1.29 & 0.39 & 3.3 \\
+\addlinespace
+\multirow{2}{*}{StrideCNN~\cite{sainath2015}} & Baseline & 1.2k & 820k & 47.52 & 8.58 & 5.01 & 13.59 & 4.08 & 34.7 \\
+& Our work & 0.8k & 58k & 80.92 & 0.28 & 1.11 & 1.39 & 0.42 & 3.5 \\
+\addlinespace
+\multirow{2}{*}{BC-ResNet-1~\cite{kim2021}} & Baseline & 9.2k & 2,390k & 98.42 & 8.47 & 83.41 & 91.88 & 27.56 & 234.3 \\
+& Our work & 9.1k & 106k & 92.07 & 0.28 & 15.31 & 15.59 & 4.68 & 39.8 \\
+\addlinespace
+\multirow{2}{*}{PoolCNN~\cite{sainath2015}} & Baseline & 13.0k & 12,076k & 96.00 & 8.59 & 23.63 & 32.22 & 9.67 & 82.2 \\
+& Our work & 4.4k & 108k & 91.07 & 0.28 & 1.53 & 1.81 & 0.54 & 4.6 \\
+\addlinespace
+\multirow{2}{*}{DS-CNN~\cite{banbury2021}} & Baseline & 23.1k & 20,429k & 99.02 & 8.36 & 46.95 & 55.31 & 16.59 & 141.0 \\
+& Our work & 22.2k & 777k & 94.47 & 0.29 & 5.92 & 6.21 & 1.86 & 15.8 \\
+\addlinespace
+\multirow{2}{*}{TC-ResNet8~\cite{choi2019}} & Baseline & 25.5k & 651k & 98.60 & 8.36 & 8.51 & 16.87 & 5.06 & 43.0 \\
+& Our work & 23.9k & 390k & 93.57 & 0.28 & 3.54 & 3.83 & 1.15 & 9.8 \\
+\addlinespace
+\multirow{2}{*}{BC-ResNet-2~\cite{kim2021}} & Baseline & 27.2k & 7,022k & 98.55 & 8.48 & 101.02 & 109.50 & 32.85 & 279.2 \\
+& Our work & 31.8k & 372k & 92.78 & 0.28 & 15.97 & 16.26 & 4.88 & 41.5 \\
+\addlinespace
+\multirow{2}{*}{\shortstack[l]{MatchboxNet-\\3$\times$1$\times$64~\cite{majumdar2020}}} & Baseline & 62.9k & 5,910k & 99.10 & 8.38 & 21.99 & 30.37 & 9.11 & 77.4 \\
+& Our work & 58.0k & 4,139k & 93.93 & 0.29 & 8.98 & 9.26 & 2.78 & 23.6 \\
+\addlinespace
+\multirow{2}{*}{EdgeSpeechNet-A~\cite{lin2018}} & Baseline & 108.1k & 409,787k & 99.28 & 8.48 & 445.83 & 454.31 & 136.29 & 1158.5 \\
+& Our work & 37.4k & 2,663k & 95.70 & 0.28 & 6.28 & 6.56 & 1.97 & 16.7 \\
+\bottomrule
+\end{tabular}
+\end{table*}

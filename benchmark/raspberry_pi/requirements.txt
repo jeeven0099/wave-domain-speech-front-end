@@ -1,0 +1,7 @@
+numpy
+psutil
+scipy
+soundfile
+torch
+torchaudio
+
